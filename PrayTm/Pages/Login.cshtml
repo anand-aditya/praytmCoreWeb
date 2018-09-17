@@ -1,0 +1,62 @@
+﻿@page
+@model PrayTm.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+<html>
+<head>
+</head>
+<body>
+
+    @*<h2>@ViewData["Title"]</h2>
+    <h3></h3>*@
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            @*<img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />*@
+            <img src="~/images/1.jpg" alt="krishna" class="img-responsive" />
+            <div class="carousel-caption" role="option">
+            </div>
+        </div>
+    </div>
+    <br />
+    <form method="post">
+
+        <table>
+            <tr><td>&nbsp;</td><td>&nbsp;&nbsp;&nbsp;</td><td> <label style="color:crimson">@Model.Message</label></td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;&nbsp;&nbsp;</td><td>&nbsp;</td></tr>
+            <tr>
+                <td><strong>Email</strong></td>
+                <td>&nbsp;&nbsp;&nbsp;</td>
+                <td> <input id="txtEmail" asp-for="email" type="email" required /></td>
+            </tr>
+            <tr><td>&nbsp;</td><td>&nbsp;&nbsp;&nbsp;</td><td>&nbsp;</td></tr>
+            <tr>
+                <td><strong>Password</strong></td>
+                <td>&nbsp;&nbsp;&nbsp;</td>
+                <td> <input id="txtPassword" asp-for="password" type="password" required /></td>
+            </tr>
+            <tr><td>&nbsp;</td><td>&nbsp;&nbsp;&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;&nbsp;&nbsp;</td><td> <button type="submit" asp-page-handler="Login">Login</button></td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;&nbsp;&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;&nbsp;&nbsp;</td><td> <a asp-page="/Register" style="color:crimson">Don't have an account ? Register here</a></td></tr>
+
+        </table>
+
+        @*<div>
+                <strong>Email</strong>
+                <input id="txtEmail" asp-for="email" type="text" />
+            </div>
+            <p></p>
+            <div>
+                <strong>Password</strong>
+                <input id="txtPassword" asp-for="password" type="password" />
+            </div>
+            <p></p>
+            <div>
+                <button type="submit" asp-page-handler="Login">Login</button>
+            </div>*@
+        @Html.AntiForgeryToken()
+    </form>
+</body>
+</html>
+
