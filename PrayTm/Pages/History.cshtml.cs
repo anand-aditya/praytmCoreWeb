@@ -53,11 +53,7 @@ namespace PrayTm.Pages
             LoggedUser = HttpContext.Session.GetString("Name");
             getHistory();
             Count = getTotalCount();
-            TotalUsers = getTotalUsers();
-            if (string.IsNullOrEmpty(LoggedUser))
-            {
-                RedirectToPage("./Index");
-            }
+            TotalUsers = getTotalUsers();          
         }
 
         private void getHistory()

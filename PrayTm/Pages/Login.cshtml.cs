@@ -92,28 +92,19 @@ namespace PrayTm.Pages
                 _httpContextAccessor.HttpContext.Session.SetString("Password", password);
                 _httpContextAccessor.HttpContext.Session.SetString("Name", userName[1].Replace('\\', ' ').Replace('"', ' ').Trim());
                 _httpContextAccessor.HttpContext.Session.SetString("HideLogin", "true");
-                //AppUser.Email = email;
-                //AppUser.Password = password;
-                //_db.Name = userName[1].Replace('\\', ' ').Replace('"', ' ').Trim();
-                //_db.AppUser = AppUser;
-                //_db.HideLogin = true;
-                //_db.HideLogout = false;
-                return RedirectToPage("./Index");
+                return RedirectToPage("./Chant");
             }
             else
             {
                 Message = "Invalid email or password";
                 return RedirectToPage("./Login", Message);
-            }
-           
+            }           
         }
 
         public IActionResult OnPostLogoutAsync()
         {
             HttpContext.Session.Clear();
             return RedirectToPage("./Index");
-
-
         }
     }
 }

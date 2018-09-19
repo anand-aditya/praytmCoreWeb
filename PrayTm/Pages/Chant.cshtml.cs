@@ -309,11 +309,7 @@ namespace PrayTm.Pages
             LoggedUser = _httpContextAccessor.HttpContext.Session.GetString("Name");
             Count = getTotalCount();
             Message = HttpContext.Request.Query["handler"].ToString();
-            TotalUsers = getTotalUsers();
-            if(string.IsNullOrEmpty(LoggedUser))
-            {
-                RedirectToPage("./Index");
-            }
+            TotalUsers = getTotalUsers();           
         }
 
         public void OnPost()
@@ -376,7 +372,7 @@ namespace PrayTm.Pages
                 }
                 else
                 {
-                    Message = "Unable to process request, please try again";
+                    Message = "Please login and try again";
                 }
             }
             return RedirectToPage("./Chant", Message);
