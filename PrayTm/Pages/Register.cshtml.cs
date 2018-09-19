@@ -34,7 +34,6 @@ namespace PrayTm.Pages
         [Required(ErrorMessage = "Confirm Password is required")]
         public string confirmPassword { get; set; }
         [BindProperty(SupportsGet = true)]
-        [Required(ErrorMessage = "Mobile is required")]
         public string mobile { get; set; }
         [BindProperty(SupportsGet = true)]
         [Required(ErrorMessage = "City is required")]

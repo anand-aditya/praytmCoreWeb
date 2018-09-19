@@ -46,14 +46,19 @@ namespace PrayTm.Pages
         [BindProperty(SupportsGet = true)]
         public string TotalUsers { get; set; }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
             var flag = HttpContext.Session.GetString("HideLogin");
             Login = Convert.ToBoolean(flag);
             LoggedUser = HttpContext.Session.GetString("Name");
+            if (string.IsNullOrEmpty(LoggedUser))
+            {
+                return RedirectToPage("./Login");
+            }           
             getHistory();
-            Count = getTotalCount();
-            TotalUsers = getTotalUsers();          
+            //Count = getTotalCount();
+            //TotalUsers = getTotalUsers();
+            return null;
         }
 
         private void getHistory()

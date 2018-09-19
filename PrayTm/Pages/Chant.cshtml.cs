@@ -302,25 +302,25 @@ namespace PrayTm.Pages
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
             var flag = _httpContextAccessor.HttpContext.Session.GetString("HideLogin");
             Login = Convert.ToBoolean(flag);
             LoggedUser = _httpContextAccessor.HttpContext.Session.GetString("Name");
-            Count = getTotalCount();
+            if (string.IsNullOrEmpty(LoggedUser))
+            {
+                return RedirectToPage("./Login", Message);
+            }
+            //Count = getTotalCount();
             Message = HttpContext.Request.Query["handler"].ToString();
-            TotalUsers = getTotalUsers();           
+            //TotalUsers = getTotalUsers();
+            return null;
         }
 
-        public void OnPost()
-        {
-            //ViewData["Test String"] = HttpContext.Session.GetString("Test String");
-            //ViewData["Test Int"] = HttpContext.Session.GetInt32("Test Int");
-            //ViewData["Test Byte Array"], BitConverter.ToBoolean(HttpContext.Session.Get("Test Byte Array"), 0);
-        }
 
         public IActionResult OnPostAddAsync()
         {
+
             string dateWithTime = date.ToString("yyyy-MM-ddTHH:mm:ss");
             if (dateWithTime == "0001-01-01T00:00:00")
             {
@@ -376,6 +376,7 @@ namespace PrayTm.Pages
                 }
             }
             return RedirectToPage("./Chant", Message);
+
 
         }
 
